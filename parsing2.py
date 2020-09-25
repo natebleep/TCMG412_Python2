@@ -133,3 +133,65 @@ print('The least requested file is:', filemin, 'with', filecounter[filemin], 're
 # -------------------------------------
 # -------------------------------------
 
+fh = open(LOCAL_FILE)
+loglines = fh.readlines()
+fh.close()
+Jan = open('January.txt', 'a')
+Feb = open('February.txt', 'a')
+Mar = open('march.txt', 'a')
+Apr = open('April.txt', 'a')
+May = open('May.txt', 'a')
+Jun = open('June.txt', 'a')
+Jul = open('July.txt', 'a')
+Aug = open('August.txt', 'a')
+Sep = open('September.txt', 'a')
+Oct = open('October.txt', 'a')
+Nov = open('November.txt', 'a')
+Dec = open('December.txt', 'a')
+
+for i in loglines:
+    date = re.split('\[(.+) .+0\]', i)
+    stupiddate = re.split('\[(.+.\]){2}', i)
+    if stupiddate == date:
+        continue
+    else: 
+        if len(date) == 3:
+            d = date[1]        
+            d = datetime.datetime.strptime(d, '%d/%b/%Y:%H:%M:%S')
+            if d.month == 1:
+                Jan.write(i)
+            elif d.month == 2:
+                Feb.write(i)
+            elif d.month == 3:
+                Mar.write(i)
+            elif d.month == 4:
+                Apr.write(i)
+            elif d.month == 5:
+                May.write(i)
+            elif d.month == 6:
+                Jun.write(i)
+            elif d.month == 7:
+                Jul.write(i)
+            elif d.month == 8:
+                Aug.write(i)
+            elif d.month == 9:
+                Sep.write(i)
+            elif d.month == 10:
+                Oct.write(i)
+            elif d.month == 11:
+                Nov.write(i)
+            elif d.month == 12:
+                Dec.write(i)
+        
+Jan.close()
+Feb.close()
+Mar.close()
+Apr.close()
+May.close()
+Jun.close()
+Jul.close()
+Aug.close()
+Sep.close()
+Oct.close()
+Nov.close()
+Dec.close()
