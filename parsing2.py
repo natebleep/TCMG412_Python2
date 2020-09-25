@@ -82,3 +82,25 @@ d2 = (log['date'][-1])
 totalDays = (d2 - d1).days
 totalWeeks = int(totalDays / 7)
 print('days: ', totalDays, 'weeks: ', totalWeeks)
+
+# -------------------------------------
+# -------------------------------------
+
+totalCodes = (len(log['code']))
+codeAmounts = {'4': 0, '3': 0}
+for i in log['code']:
+    if i[0] == '4':
+        codeAmounts['4'] += 1
+    elif i[0] == '3':
+        codeAmounts['3'] +=1
+    else:
+        continue
+
+code4xPercent = int((codeAmounts['4'] / totalCodes) * 100)
+code3xPercent = int((codeAmounts['3'] / totalCodes) * 100)
+print('Percent of 4xx codes: ', code4xPercent,'%' 
+'\nPercent of 3xx codes: ', code3xPercent, "%")
+
+# -------------------------------------
+# -------------------------------------
+
