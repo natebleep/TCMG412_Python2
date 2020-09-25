@@ -70,18 +70,28 @@ for i in log['date']:
     elif datetime.datetime.weekday(i) == 6:
         daysCounter['Sunday'] += 1
 
+print('The following is the amount of files accessed on each weekday: ')
 print(daysCounter)
 
+print('\n ------------ \n')
+
 
 # -------------------------------------
 # -------------------------------------
-
-
+ 
+datecount = (len(log['date']))
 d1 = (log['date'][0])
 d2 = (log['date'][-1])
 totalDays = (d2 - d1).days
 totalWeeks = int(totalDays / 7)
-print('days: ', totalDays, 'weeks: ', totalWeeks)
+totalMonths = totalWeeks / 4
+weekavg = int(datecount / totalWeeks)
+monthavg = int(datecount / totalMonths)
+
+print('There is an average of', weekavg, 'requests per week.' )
+print('There is an average of', monthavg, 'requests per month.' )
+
+print('\n ------------ \n')
 
 # -------------------------------------
 # -------------------------------------
@@ -98,8 +108,27 @@ for i in log['code']:
 
 code4xPercent = int((codeAmounts['4'] / totalCodes) * 100)
 code3xPercent = int((codeAmounts['3'] / totalCodes) * 100)
-print('Percent of 4xx codes: ', code4xPercent,'%' 
-'\nPercent of 3xx codes: ', code3xPercent, "%")
+print('Percent of unsuccessful requests (4xx codes): ', code4xPercent,'%' 
+'\nPercent of successful requests (3xx codes): ', code3xPercent, "%")
+
+print('\n ------------ \n')
+
+# -------------------------------------
+# -------------------------------------
+
+filecounter = {}
+filecounter['index.html'] = 1
+for i in log['filename']:
+    if i in filecounter:
+        filecounter[i] += 1
+    else:        
+        filecounter[i] = 1       
+# print(filecounter)
+filemax = max(filecounter, key=filecounter.get)
+print('The most requested file is:', filemax, 'with', filecounter[filemax], 'requests.')
+
+filemin = min(filecounter, key=filecounter.get)
+print('The least requested file is:', filemin, 'with', filecounter[filemin], 'requests.')
 
 # -------------------------------------
 # -------------------------------------
