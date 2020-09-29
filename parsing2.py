@@ -149,10 +149,9 @@ Oct = open('October.txt', 'a')
 Nov = open('November.txt', 'a')
 Dec = open('December.txt', 'a')
 
-for i in loglines:
-    date = re.split('\[(.+) .+0\]', i)
-    stupiddate = re.split('\[(.+.\]){2}', i)
-    if stupiddate == date:
+for i in loglines:    
+    date = re.split('\[(.+) .+0\]', i)    
+    if len(i) > 100:
         continue
     else: 
         if len(date) == 3:
