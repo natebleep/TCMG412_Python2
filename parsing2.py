@@ -37,8 +37,6 @@ for i in parts:
     else:
         continue
 
-# print(log['date'][0])
-
 #-----Amount of requests on each day 
 daysCounter = {
     'Monday': 0, 
@@ -49,12 +47,8 @@ daysCounter = {
     'Saturday': 0,
     'Sunday': 0}
 
-# for i in log.values['date']:
-#     print(log.value['date'])
 
-# print(log['date'])
-for i in log['date']:
-    # print(datetime.datetime.weekday(i))
+for i in log['date']:    
     if datetime.datetime.weekday(i) == 0:
         daysCounter['Monday'] += 1
     elif datetime.datetime.weekday(i) == 1:
@@ -123,7 +117,7 @@ for i in log['filename']:
         filecounter[i] += 1
     else:        
         filecounter[i] = 1       
-# print(filecounter)
+
 filemax = max(filecounter, key=filecounter.get)
 print('The most requested file is:', filemax, 'with', filecounter[filemax], 'requests.')
 
